@@ -40,7 +40,7 @@ pipeline {
 				    withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
             				sh "docker login -u sumanth17121988 -p ${dockerhub}"
 				    }
-				        myimage.push("sumanth17121988/springdockerapp:1")
+				        myimage.push("${env.BUILD_ID}")
 				    
 			    }
 		    }
