@@ -28,7 +28,7 @@ pipeline {
 		    steps {
 			    sh 'whoami'
 			    script {
-				    myimage = docker.build("sumanth17121988/cicd:${env.BUILD_ID}")
+				    myimage = docker.build("sumanth17121988/springdockerapp:1")
 			    }
 		    }
 	    }
@@ -40,7 +40,17 @@ pipeline {
 				    withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
             				sh "docker login -u sumanth17121988 -p ${dockerhub}"
 				    }
-				        myimage.push("${env.BUILD_ID}")
+				        myimage.push("sumanth17121988/springdockerapp:1")
+				    
+			    }
+		    }
+	    }
+	    stage("Running Docker Container Docker Image") {
+		    steps {
+			    script {
+				    echo "Running Docker Container"
+				    sh "docker run -d -p 8082:8082 sumanth17121988/springdockerapp:1"
+				   
 				    
 			    }
 		    }
