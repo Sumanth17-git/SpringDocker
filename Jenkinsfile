@@ -28,7 +28,7 @@ pipeline {
 		    steps {
 			    sh 'whoami'
 			    script {
-				    myimage = docker.build("sumanth17121988/springdockerapp:1")
+				    myimage = docker.build("sumanth17121988/dockerspringweb:${env.BUILD_ID}")
 			    }
 		    }
 	    }
@@ -49,7 +49,7 @@ pipeline {
 		    steps {
 			    script {
 				    echo "Running Docker Container"
-				    sh "docker run -d -p 8082:8082 sumanth17121988/springdockerapp:1"
+				    sh "docker run -d -p 8082:8082 sumanth17121988/dockerspringweb:${env.BUILD_ID}"
 				   
 				    
 			    }
