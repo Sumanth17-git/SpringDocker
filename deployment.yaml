@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: springweb-app
-          image: sumanth17121988/dockerspringweb:4
+          image: sumanth17121988/dockerspringweb:tagversion
           imagePullPolicy: Always
           ports:
             - containerPort: 8082
